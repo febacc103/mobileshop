@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<!--<style>-->
+<!--    h1{-->
+<!--    color:green;-->
+<!--    }-->
+<!--    div.col-md-6{-->
+<!--    background-color:#ceedef-->
+<!--    }-->
+
+
+<!--</style>-->
+{%extends 'index.html'%}
+
+{%block body_block%}
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input type="submit" value="place">
+
+
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+</div>
+
+
+
+</div>
+
+{% endblock %}

@@ -18,3 +18,27 @@ class Product(models.Model):
 
     def __str__(self):
         return self.mobile_name
+
+
+class Cart(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    user=models.CharField(max_length=120)
+    options=(("cart","cart"),
+             ("orderplaced","orderplaced")
+             )
+    status=models.CharField(max_length=120,choices=options,default="cart")
+
+
+class Orders(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    user=models.CharField(max_length=120)
+    address=models.CharField(max_length=200)
+    options=(
+        ("ordered","ordered"),
+        ("packed","packed"),
+        ("shipped","shipped"),
+        ("delivered","delivered"),
+        ("canceled","canceled")
+             )
+    status=models.CharField(max_length=120,choices=options,default="ordered")
+    date=models.DateTimeField(auto_now=True)

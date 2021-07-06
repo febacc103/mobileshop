@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+<style>
+    h1{
+    color:#663300;
+    }
+    div.col-md-6{
+    background-color:orange
+    }
+       div.col-md-8{
+    background-color:#99ff99
+    }
+
+
+
+</style>
+{%extends 'index.html'%}
+
+{%block body_block%}
+
+<div class="row">
+    <h1 align="center">My Orders</h1>
+
+    {%for order in orders%}
+
+
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{order.product.image.url}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{order.product.mobile_name}}</h5>
+                    <p class="card-text">{{order.product.brand}}</p>
+                    <p class="card-text">{{order.product.price}}</p>
+                    <a href="{%url 'removeorder' order.id%}" class="btn btn-danger">Cancel Order</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+{% endblock %}
+

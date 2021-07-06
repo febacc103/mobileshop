@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+<style>
+    h1{
+    color:green;
+    }
+    div.col-md-6{
+    background-color:#ceedef
+    }
+       div.col-md-8{
+    background-color:orange
+    }
+
+
+
+</style>
+{%extends 'index.html'%}
+
+{%block body_block%}
+
+<div class="row">
+    <h1 align="center">My Carts</h1>
+
+    {%for cart_item in cart_items%}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{cart_item.product.image.url}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{cart_item.product.mobile_name}}</h5>
+                    <p class="card-text">{{cart_item.product.brand}}</p>
+                    <p class="card-text">{{cart_item.product.price}}</p>
+                    <p class="card-text">{{cart_item.product.status}}</p>
+                    <a href="{%url 'removecart' cart_item.id%}" class="btn btn-danger">Remove</a>
+                    <a href="{%url 'place_order' cart_item.product.id cart_item.id%}" class="btn btn-primary">Placeorder</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+</div>
+{% endblock %}
+
